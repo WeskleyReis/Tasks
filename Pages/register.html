@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <link rel="stylesheet" href="../Styles/register.css">
+    <title>Register Tasks WI</title>
+</head>
+<body>
+    <main class="container">
+        <form class="container-register">
+            <h1>Register</h1>
+            <div class="input-box">
+                <input class="username" type="text" placeholder="Username">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input class="email" type="email" placeholder="E-mail">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input class="password" type="password" placeholder="Create password">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="input-box">
+                <input class="password" type="password" placeholder="Confirm password">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="terms-conditions">
+                <label>
+                    <input type="checkbox"> Accept <span onclick="openModal()">terms and conditions</span>
+                </label>
+            </div>
+            <button class="btn-register" type="submit">Create Account</button>
+            <div class="register-link">Already a user? <a href="login.html">Login</a></div>
+        </form>
+    </main>
+
+    <div id="modal-terms" class="modal">
+        <div class="modal-content">
+            <h1>Terms and Conditions</h1>
+            <div class="text-terms">
+                <p>Welcome! Before continuing, please read the terms below carefully:</p>
+
+                <p>This website was developed <strong>exclusively for educational purposes</strong>, with the goal of <strong>practicing and applying knowledge in web development</strong>, including front-end, back-end, and user interaction.</p>
+
+                <ul>
+                    <li>This system <strong>is not intended for commercial use</strong>.</li>
+                    <li>Any data entered may be fictional or deleted at any time, as the site is under continuous development.</li>
+                    <li>This project is part of the developer’s <strong>personal portfolio</strong> and will be used to <strong>demonstrate technical skills</strong> in job applications and public showcases.</li>
+                    <li>By using this system, you acknowledge that it is <strong>only a simulation</strong>, with no guarantees of security, privacy, or stability.</li>
+                </ul>
+
+                <p>By clicking <strong>"I accept the terms"</strong>, you confirm that you understand the purpose of this site and authorize the use of any entered data for testing and demonstration purposes.</p>
+            </div>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="../JavaScript/register.js"></script>
+</body>
+</html>

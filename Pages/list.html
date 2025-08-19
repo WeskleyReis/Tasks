@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../Styles/list.css">
+    <title>Tasks WI</title>
+</head>
+<body>
+    <div class="section">
+        <form class="create-new-list">
+            <h1>Create a new list</h1>
+            <div class="list-information">
+                <input type="text" placeholder="List name" class="input-name">
+                <input type="text" placeholder="List description" class="input-desc">
+            </div>
+            <div class="button-create">
+                <button type="submit" class="btn-new-list">Confirm</button>
+            </div>
+        </form>
+
+        <div class="container">
+            <div class="container-list">
+                <div class="container-list-name">
+                    <i class="fa-solid fa-angle-right toggle-task"></i>
+
+                    <h1 class="list-name">Market shopping</h1>
+
+                    <i class="fa-regular fa-pen-to-square edit-list"></i>
+                    <i class="fa-solid fa-trash-can delete-list"></i>
+                    <i class="fa-solid fa-circle-info open-description"></i>
+
+                    <form class="container-edit-list hidden">
+                        <input type="text" placeholder="Edit your list here">
+                        <button type="submit" class="action-btn">
+                        <i class="fa-solid fa-check"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="modal-description hidden">
+                    <div class="modal-content">
+                        <h1>List description</h1>
+                        <div class="text-description">
+                            <p>This is an example shopping list created to demonstrate how the system organizes and displays personalized lists. It contains basic grocery items and simulates a real-life scenario, allowing users to see how the project’s features work in practice.</p>
+                        </div>
+                        <button class="close-modal">Close</button>
+                    </div>
+                </div>
+
+                <div class="progress-bar hidden">
+                    <div class="progress-fill"></div>
+                    <div class="progress-box">
+                        <span class="progress-text">0% completed</span>
+                    </div>
+                </div>
+
+                <div class="button-new-task hidden">
+                    <button class="btn-new-task">New Task</button>
+                </div>
+
+                <div class="modal-new-task hidden">
+                    <form class="container-new-task">
+                        <h1>Create a new task</h1>
+                        <div class="info-new-task">
+                            <input type="text" placeholder="Write the name of your task here" class="input-name-task">
+                            <div class="date-time">
+                                <input type="date" class="input-date-task">
+                                <input type="time" class="input-time-task">
+                            </div>
+                        </div>
+                        <div class="button-create-task">
+                            <button type="submit" class="btn-create-task">Confirm</button>
+                            <button type="button" class="btn-cancel-task">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="container-tasks hidden">
+                    <div class="task">
+                        <input type="checkbox" class="progress">
+                        <div class="info-task">
+                            <label class="task-description">Comprar banana</label>
+                            <div class="container-task-datetime">
+                                <i class="fa-solid fa-calendar-days icon-datetime"></i>
+                                <div class="task-datetime">
+                                    <span class="task-date">07/07/2025</span> - <span class="task-time">20:00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <i class="fa-regular fa-pen-to-square edit-task"></i>
+                        <i class="fa-regular fa-copy copy-task"></i>
+                        <i class="fa-solid fa-trash-can delete-task"></i>
+
+                        <form class="container-edit-task hidden">
+                            <input type="text" placeholder="Edit your task here" class="edit-name-task">
+                            <button type="submit" class="action-btn">
+                            <i class="fa-solid fa-check"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-delete hidden">
+        <div class="modal-content-del">
+            <h2>Are you sure you want to delete?</h2>
+            <div class="modal-actions">
+                <button class="btn-confirm-delete">Yes</button>
+                <button class="btn-cancel-delete">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JavaScript/list.js"></script>
+</body>
+</html>
