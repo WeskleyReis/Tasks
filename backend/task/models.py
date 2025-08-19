@@ -16,12 +16,27 @@ class ListTask(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def update_completion(self):
+        total = self.tasks.count()
+        if total == 0:
+            self.completion_percentage = 0
+        else:
+            completed_tasks = self.tasks.filter(is_completed=True).count()
+            self.completion_percentage = int((completed_tasks / total) * 100)
+        self.save()
 
 
 class Task(models.Model):
     class Meta:
         verbose_name = 'Tarefa'
         verbose_name_plural = 'Tarefas'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['list_task', 'order'],
+                name='unique_task_order_per_list'
+            )
+        ]
 
     name = models.CharField(max_length=100)
     due_date = models.DateTimeField(null=True, blank=True)
@@ -35,3 +50,11 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.order == 0:
+            last_order = self.list_task.tasks.aggregate(models.Max('order'))['order__max'] or 0
+            self.order = last_order + 1
+        
+        super().save(*args, **kwargs)
+        self.list_task.update_completion()
