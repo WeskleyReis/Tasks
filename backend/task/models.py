@@ -32,6 +32,7 @@ class Task(models.Model):
     class Meta:
         verbose_name = 'Tarefa'
         verbose_name_plural = 'Tarefas'
+        ordering = ['order']
         constraints = [
             models.UniqueConstraint(
                 fields=['list_task', 'order'],
