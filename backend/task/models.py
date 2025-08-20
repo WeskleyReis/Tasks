@@ -33,13 +33,7 @@ class Task(models.Model):
         verbose_name = 'Tarefa'
         verbose_name_plural = 'Tarefas'
         ordering = ['order']
-        constraints = [
-            models.UniqueConstraint(
-                fields=['list_task', 'order'],
-                name='unique_task_order_per_list'
-            )
-        ]
-
+        
     name = models.CharField(max_length=100)
     due_date = models.DateTimeField(null=True, blank=True)
     is_completed = models.BooleanField(default=False)
