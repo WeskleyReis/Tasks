@@ -7,6 +7,7 @@ class ListTask(models.Model):
         verbose_name_plural = 'Listas'
 
     title = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True)
     completion_percentage = models.IntegerField(default=0)
     user = models.ForeignKey(
         User,
@@ -57,4 +58,12 @@ class Task(models.Model):
             self.order = last_order + 1
         
         super().save(*args, **kwargs)
+        self.list_task.update_completion()
+    
+    def delete(self,*args, **kwargs):
+        subsequent_tasks = self.list_task.tasks.filter(order__gt=self.order)
+        super().delete(*args, **kwargs)
+        for task in subsequent_tasks:
+            task.order -= 1
+            task.save()
         self.list_task.update_completion()
