@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Documentation
+    'drf_spectacular',
+
     # Rest framework
     'rest_framework',
     'rest_framework_simplejwt',
@@ -138,7 +141,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 SIMPLE_JWT = {
@@ -148,4 +152,11 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": False,
     "SIGNING_KEY": os.environ.get('SECRET_KEY_JWT'),
     "AUTH_HEADER_TYPES": ("Bearer",),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'WeskleyX List Tasks API',
+    'DESCRIPTION': 'API for managing tasks and lists',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
