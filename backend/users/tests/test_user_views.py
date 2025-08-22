@@ -11,6 +11,7 @@ class UserViewSetTest(TestCase):
         super().setUp()
         self.user = User.objects.create_user(
             username='testuser',
+            email='test@email.com',
             password='StrongPassword123'
         )
         self.client = APIClient()
@@ -147,3 +148,30 @@ class UserViewSetTest(TestCase):
             'The password must be different from the current one',
             str(response.json())
         )
+
+    def test_get_me(self):
+        response = self.client.get(reverse('user:user-me'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(self.user.username, str(response.json()))
+        self.assertIn(self.user.email, str(response.json()))
+
+    def test_login_with_email_invalid(self):
+        data = {
+            "email": "invalid@example.com",
+            "password": "StrongPassword123"
+        }
+
+        url = reverse('user:login-list')
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 404)
+        self.assertIn('User not found', str(response.json()))
+
+    def test_login_with_email(self):
+        data = {
+            "email": "test@email.com",
+            "password": "StrongPassword123"
+        }
+
+        url = reverse('user:login-list')
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, 200)
